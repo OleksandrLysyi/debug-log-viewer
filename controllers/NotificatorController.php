@@ -49,12 +49,16 @@ class DLV_Notificator
 
     public function dlv_get_notification_recurrence()
     {
-        $html_options = '';
         foreach ($this->email_recurrences as $key => $value) {
             $selected = $key == $this->dlv_get_notification_recurrences() ? 'selected="selected"' : '';
-            $html_options .= sprintf('<option value="%s" %s>%s</option>', $key, $selected, $value);
-        }
-        return $html_options;
+            // Use esc_attr() for the value and the selected attribute, and esc_html() for the display text
+            echo sprintf(
+                '<option value="%s" %s>%s</option>',
+                esc_attr($key),         // Escape the value for safety
+                $selected,              // Do not escape the selected attribute (it is already safe)
+                esc_html($value)        // Escape the label for safety
+            );
+        }        
     }
 
     private function dlv_get_notification_recurrences()

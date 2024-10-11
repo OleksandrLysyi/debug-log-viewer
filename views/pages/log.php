@@ -99,7 +99,7 @@ class DLV_LogView
 
                             <label for="recurrence"><?php esc_html_e('Periodicity:', 'debug-log-viewer') ?></label>
                             <select name="recurrence" id="recurrence">
-                                <?php echo esc_html($notificator->dlv_get_notification_recurrence()); ?>
+                                <?php $notificator->dlv_get_notification_recurrence(); ?>
                             </select>
                             <?php require_once realpath(__DIR__) . '/../components/send-test-email-checkbox.php'; ?>
 
